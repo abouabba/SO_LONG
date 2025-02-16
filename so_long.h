@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/15 13:41:06 by abouabba          #+#    #+#             */
-/*   Updated: 2025/02/16 16:54:45 by abouabba         ###   ########.fr       */
+/*   Created: 2025/02/15 22:05:07 by abouabba          #+#    #+#             */
+/*   Updated: 2025/02/16 16:49:59 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+# ifndef SO_LONG_H
+# define SO_LONG_H
 
-int main(int ac, char **av)
+# include "../so_long/get_next_line/get_next_line.h"
+# include <stdio.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <fcntl.h>
+
+typedef struct so_long
 {
-	int fd;
-	int map;
+	char **map;
+}				so_long;
 
-	fd = open("map.ber", O_RDONLY-);
-	if (ac == 2)
-	{
-		int fd = open("map.ber", O_RDONLY);
-	}
-}
+
+#endif
