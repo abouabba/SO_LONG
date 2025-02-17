@@ -6,7 +6,7 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 13:41:06 by abouabba          #+#    #+#             */
-/*   Updated: 2025/02/17 20:08:58 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/02/17 21:52:43 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,9 +104,15 @@ int main (int ac, char **av)
 	width = ft_strlen(map[0]);
 	if (!is_map_valid_by_walls(map, height, width))
 	{
-		print_error("Error : map is not valid");
+		print_error("Error\n!map is not valid");
 		free_map(map);
 		return (1);
+	}
+	if (!is_map_rectangular(map))
+	{
+		print_error("Error\n!map is not rectangular");
+		free_map(map);
+		return(1);
 	}
 	while (map[i])
 		free(map[i++]);

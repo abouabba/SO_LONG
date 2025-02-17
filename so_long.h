@@ -6,7 +6,7 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 22:05:07 by abouabba          #+#    #+#             */
-/*   Updated: 2025/02/17 19:58:26 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/02/17 21:47:32 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ int		in_valid_ber_file(const char *file_name);
 void	free_map(char **map);
 int		is_map_valid_by_walls(char **map, int height, int width);
 void	print_error(char *msg);
+int		is_map_rectangular(char **map);
 
 #endif

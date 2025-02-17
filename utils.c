@@ -6,7 +6,7 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 16:35:02 by abouabba          #+#    #+#             */
-/*   Updated: 2025/02/17 18:00:21 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/02/17 21:54:04 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,5 @@ void	free_map(char **map)
 
 void print_error(char *msg)
 {
-	write (1, msg, ft_strlen(msg));
+	write (2, msg, ft_strlen(msg));
 }

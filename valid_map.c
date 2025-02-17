@@ -6,7 +6,7 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 16:42:10 by abouabba          #+#    #+#             */
-/*   Updated: 2025/02/17 21:18:34 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/02/17 21:34:09 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,15 @@ int	is_map_rectangular(char **map)
 	int	i;
 	int width;
 
-	i = 0;
+	if (!map || !map[0])
+		return (0);
 	width = ft_strlen(map[0]);
-	while(width)
+	i = 1;
+	while (map[i])
 	{
-		if ()
+		if (ft_strlen(map[i]) != width)
+			return (0);
+		i++;
 	}
+	return (1);
 }
