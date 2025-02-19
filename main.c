@@ -6,7 +6,7 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 13:41:06 by abouabba          #+#    #+#             */
-/*   Updated: 2025/02/17 21:52:43 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/02/17 23:48:47 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ int main (int ac, char **av)
 		return (1);
 	if (!in_valid_ber_file(av[1]))
 	{
-		print_error("Error : file_name is not valid");
+		print_error("Error\n!file_name is not valid");
 		return (1);
 	}
 	map = store_map_to_2d_array(av[1]);
@@ -113,6 +113,12 @@ int main (int ac, char **av)
 		print_error("Error\n!map is not rectangular");
 		free_map(map);
 		return(1);
+	}
+	if (!is_map_valid_chars(map))
+	{
+		print_error("Error\n!Invalid map");
+		free_map(map);
+		return (1);
 	}
 	while (map[i])
 		free(map[i++]);
