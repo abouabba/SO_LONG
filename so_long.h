@@ -6,7 +6,7 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 22:05:07 by abouabba          #+#    #+#             */
-/*   Updated: 2025/02/17 22:41:27 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/02/20 18:10:55 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,22 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
+# include "mlx/mlx.h"
+// # include "mlx/mlx_int.h"
 
-typedef struct so_long
+typedef struct s_game
 {
-	char **map;
-}				so_long;
+	void		*mlx;
+	void		*win;
+	void		*wall;
+	void		*floor;
+	void		*player;
+	void		*collectible;
+	void		*exit;
+	char		**map;
+	int			width;
+	int			height;
+}				t_game;
 
 int		count_map_lines(const char *file_name);
 char	**store_map_to_2d_array(const char *file_name);

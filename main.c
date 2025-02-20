@@ -6,7 +6,7 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 13:41:06 by abouabba          #+#    #+#             */
-/*   Updated: 2025/02/17 23:48:47 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/02/20 23:07:47 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ char **store_map_to_2d_array(const char *file_name)
 {
 	int		fd;
 	int		i;
+	int		j;
 	int		height;
 	char	**map;
 	char	*line;
@@ -65,15 +66,14 @@ char **store_map_to_2d_array(const char *file_name)
 		return (NULL);
 	fd = open(file_name, O_RDONLY);
 	if (fd == -1)
-	{
-		free(map);
 		return (NULL);
-	}
 	line = get_next_line(fd);
+	int k = ft_strlen(line);
 	while (line)
 	{
-		if (ft_strchr(line, '\n'))
-			*ft_strchr(line, '\n') = '\0';
+		j = ft_strlen(line);
+		if (k == j)
+			line[j - 1] =  '\0';
 		map[i++] = line;
 		line = get_next_line(fd);
 	}
@@ -84,11 +84,11 @@ char **store_map_to_2d_array(const char *file_name)
 
 int main (int ac, char **av)
 {
-	char	**map;
 	int		i;
-	int		height;
-	int		width;
-
+	t_game	h;
+	t_game	w;
+	t_game	game;
+	
 	i = 0;
 	if (ac != 2)
 		return (1);
@@ -97,31 +97,22 @@ int main (int ac, char **av)
 		print_error("Error\n!file_name is not valid");
 		return (1);
 	}
-	map = store_map_to_2d_array(av[1]);
-	if (!map)
+	game.map = store_map_to_2d_array(av[1]);
+	if (!game.map)
 		return (1);
-	height = count_map_lines(av[1]);
-	width = ft_strlen(map[0]);
-	if (!is_map_valid_by_walls(map, height, width))
+	h.height = count_map_lines(av[1]);
+	w.width = ft_strlen(game.map[0]);
+	if (!is_map_valid_by_walls(game.map, h.height, w.width) || !is_map_rectangular(game.map) || !is_map_valid_chars(game.map))
 	{
-		print_error("Error\n!map is not valid");
-		free_map(map);
-		return (1);
-	}
-	if (!is_map_rectangular(map))
-	{
-		print_error("Error\n!map is not rectangular");
-		free_map(map);
-		return(1);
-	}
-	if (!is_map_valid_chars(map))
-	{
-		print_error("Error\n!Invalid map");
-		free_map(map);
+		print_error("Error\n!in valid map");
+		free_map(game.map);
 		return (1);
 	}
-	while (map[i])
-		free(map[i++]);
-	free(map);
+    // game.mlx = mlx_init();
+	//ft_render_map();
+    // game.win = mlx_new_window( game.mlx, 800, 600, "so_long");
+    // mlx_hook(win, 17, 0, close_game, NULL); // Close window with (X) button
+    // mlx_key_hook(win, handle_key, NULL);    // Escape key to exit
+    // mlx_loop(game.mlx);
 	return (0);
 }
