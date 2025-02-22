@@ -6,7 +6,7 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 22:05:07 by abouabba          #+#    #+#             */
-/*   Updated: 2025/02/20 18:10:55 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/02/22 17:37:09 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct s_game
 	void		*mlx;
 	void		*win;
 	void		*wall;
-	void		*floor;
+	void		*empty;
 	void		*player;
 	void		*collectible;
 	void		*exit;
@@ -35,9 +35,9 @@ typedef struct s_game
 	int			height;
 }				t_game;
 
-int		count_map_lines(const char *file_name);
-char	**store_map_to_2d_array(const char *file_name);
-int		in_valid_ber_file(const char *file_name);
+int		count_map_lines(char *file_name);
+char	**store_map_to_2d_array(char *file_name);
+int		in_valid_ber_file(char *file_name);
 void	free_map(char **map);
 int		is_map_valid_by_walls(char **map, int height, int width);
 void	print_error(char *msg);

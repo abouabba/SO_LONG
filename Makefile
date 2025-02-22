@@ -3,20 +3,19 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
 SRCS = main.c \
-       get_next_line/get_next_line.c \
+	   get_next_line/get_next_line.c \
        get_next_line/get_next_line_utils.c \
        valid_map.c \
 	   utils.c
 
 OBJS = $(SRCS:.c=.o)
 
-
 MLX_FLAGS = -L ./mlx -lmlx  -lXext -lX11
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS)  $(OBJS) $(MLX_FLAGS) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) $(MLX_FLAGS) -o $(NAME)
 
 %.o: %.c
 	$(CC) $(CFLAGS)  -c $< -o $@

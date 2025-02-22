@@ -6,13 +6,13 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 13:41:06 by abouabba          #+#    #+#             */
-/*   Updated: 2025/02/20 23:07:47 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/02/22 17:36:32 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	in_valid_ber_file(const char *file_name)
+int	in_valid_ber_file(char *file_name)
 {
 	int	len;
 
@@ -29,7 +29,7 @@ int	in_valid_ber_file(const char *file_name)
 			file_name[len - 1] == 'r');
 }
 
-int count_map_lines(const char *file_name)
+int count_map_lines(char *file_name)
 {
 	int		fd;
 	int		height;
@@ -48,7 +48,7 @@ int count_map_lines(const char *file_name)
 	return (height);
 }
 
-char **store_map_to_2d_array(const char *file_name)
+char **store_map_to_2d_array(char *file_name)
 {
 	int		fd;
 	int		i;
@@ -84,12 +84,10 @@ char **store_map_to_2d_array(const char *file_name)
 
 int main (int ac, char **av)
 {
-	int		i;
 	t_game	h;
 	t_game	w;
 	t_game	game;
 	
-	i = 0;
 	if (ac != 2)
 		return (1);
 	if (!in_valid_ber_file(av[1]))
@@ -99,7 +97,10 @@ int main (int ac, char **av)
 	}
 	game.map = store_map_to_2d_array(av[1]);
 	if (!game.map)
+	{
+		print_error("Error\n!in valid map");
 		return (1);
+	}
 	h.height = count_map_lines(av[1]);
 	w.width = ft_strlen(game.map[0]);
 	if (!is_map_valid_by_walls(game.map, h.height, w.width) || !is_map_rectangular(game.map) || !is_map_valid_chars(game.map))
@@ -108,11 +109,18 @@ int main (int ac, char **av)
 		free_map(game.map);
 		return (1);
 	}
-    // game.mlx = mlx_init();
-	//ft_render_map();
-    // game.win = mlx_new_window( game.mlx, 800, 600, "so_long");
-    // mlx_hook(win, 17, 0, close_game, NULL); // Close window with (X) button
-    // mlx_key_hook(win, handle_key, NULL);    // Escape key to exit
-    // mlx_loop(game.mlx);
+    game.mlx = mlx_init();
+    game.win = mlx_new_window( game.mlx, 64 * 28, 13 * 64, "so_long");
+	game.player = mlx_xpm_file_to_image(game.mlx, "./textures/player.xpm", &w.width, &h.height);
+	game.collectible = mlx_xpm_file_to_image(game.mlx, "./textures/collectible.xpm", &w.width, &h.height);
+	game.empty = mlx_xpm_file_to_image(game.mlx, "./textures/empty.xpm", &w.width, &h.height);
+	game.exit = mlx_xpm_file_to_image(game.mlx, "./textures/door.xpm", &w.width, &h.height);
+	game.wall = mlx_xpm_file_to_image(game.mlx, "./textures/wall.xpm", &w.width, &h.height);
+	mlx_put_image_to_window(game.mlx, game.win, game.player, 0, 0);
+	mlx_put_image_to_window(game.mlx, game.win, game.collectible, 200, 200);
+	mlx_put_image_to_window(game.mlx, game.win, game.exit, 200, 300);
+	mlx_put_image_to_window(game.mlx, game.win, game.empty, 130, 120);
+	mlx_put_image_to_window(game.mlx, game.win, game.wall, 100, 100);
+    mlx_loop(game.mlx);
 	return (0);
 }
