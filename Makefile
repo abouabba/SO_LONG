@@ -6,7 +6,8 @@ SRCS = main.c \
 	   get_next_line/get_next_line.c \
        get_next_line/get_next_line_utils.c \
        valid_map.c \
-	   utils.c
+	   utils.c \
+	   flood_fill.c
 
 OBJS = $(SRCS:.c=.o)
 

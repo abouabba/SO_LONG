@@ -84,8 +84,6 @@ char **store_map_to_2d_array(char *file_name)
 
 int main (int ac, char **av)
 {
-	t_game	h;
-	t_game	w;
 	t_game	game;
 	
 	if (ac != 2)
@@ -101,21 +99,22 @@ int main (int ac, char **av)
 		print_error("Error\n!in valid map");
 		return (1);
 	}
-	h.height = count_map_lines(av[1]);
-	w.width = ft_strlen(game.map[0]);
-	if (!is_map_valid_by_walls(game.map, h.height, w.width) || !is_map_rectangular(game.map) || !is_map_valid_chars(game.map))
+	game.height = count_map_lines(av[1]);
+	game.width = ft_strlen(game.map[0]);
+	game.copy = copy_map(game.map, game.height);
+	if (!is_map_valid_by_walls(game.map, game.height, game.width) || !is_map_rectangular(game.map) || !is_map_valid_chars(game.map))
 	{
-		print_error("Error\n!in valid map");
+		print_error("Error\n!In valid map");
 		free_map(game.map);
 		return (1);
 	}
     game.mlx = mlx_init();
     game.win = mlx_new_window( game.mlx, 64 * 28, 13 * 64, "so_long");
-	game.player = mlx_xpm_file_to_image(game.mlx, "./textures/player.xpm", &w.width, &h.height);
-	game.collectible = mlx_xpm_file_to_image(game.mlx, "./textures/collectible.xpm", &w.width, &h.height);
-	game.empty = mlx_xpm_file_to_image(game.mlx, "./textures/empty.xpm", &w.width, &h.height);
-	game.exit = mlx_xpm_file_to_image(game.mlx, "./textures/door.xpm", &w.width, &h.height);
-	game.wall = mlx_xpm_file_to_image(game.mlx, "./textures/wall.xpm", &w.width, &h.height);
+	game.player = mlx_xpm_file_to_image(game.mlx, "./textures/player.xpm", &game.width, &game.height);
+	game.collectible = mlx_xpm_file_to_image(game.mlx, "./textures/collectible.xpm", &game.width, &game.height);
+	game.empty = mlx_xpm_file_to_image(game.mlx, "./textures/empty.xpm", &game.width, &game.height);
+	game.exit = mlx_xpm_file_to_image(game.mlx, "./textures/door.xpm", &game.width, &game.height);
+	game.wall = mlx_xpm_file_to_image(game.mlx, "./textures/wall.xpm", &game.width, &game.height);
 	mlx_put_image_to_window(game.mlx, game.win, game.player, 0, 0);
 	mlx_put_image_to_window(game.mlx, game.win, game.collectible, 200, 200);
 	mlx_put_image_to_window(game.mlx, game.win, game.exit, 200, 300);

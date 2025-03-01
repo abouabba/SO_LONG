@@ -30,6 +30,7 @@ typedef struct s_game
 	void		*player;
 	void		*collectible;
 	void		*exit;
+	char		**copy;
 	char		**map;
 	int			width;
 	int			height;
@@ -43,5 +44,5 @@ int		is_map_valid_by_walls(char **map, int height, int width);
 void	print_error(char *msg);
 int		is_map_rectangular(char **map);
 int		is_map_valid_chars(char **map);
-
+char	**copy_map(char **map, int height);
 #endif
