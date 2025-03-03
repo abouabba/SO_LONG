@@ -6,7 +6,7 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 22:05:07 by abouabba          #+#    #+#             */
-/*   Updated: 2025/02/22 17:37:09 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/03/03 14:40:46 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,5 @@ void	print_error(char *msg);
 int		is_map_rectangular(char **map);
 int		is_map_valid_chars(char **map);
 char	**copy_map(char **map, int height);
+void	flood_fill(char **map, int x, int y);
 #endif

@@ -26,3 +26,32 @@ char **copy_map(char **map, int height)
 	return (map_copy);
 }
 
+void	floodfill(char **map, int x, int y)
+{
+	if (map[y][x] == '1' || map[y][x] == 'F')
+		return ;
+	map[y][x] = 'F';
+	floodfill(map, x + 1, y);
+	floodfill(map, x - 1, y);
+	floodfill(map, x, y + 1);
+	floodfill(map, x, y - 1);
+}
+
+void	check_valid_path(char **map, int height, int width)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < height)
+	{
+		j = 0;
+		while (j < width)
+		{
+			if (map[i][j] == 'C' || map[i][j] == 'E')
+				return ;
+			j++;
+		}
+		i++;
+	}
+}

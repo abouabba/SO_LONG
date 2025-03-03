@@ -6,7 +6,7 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 13:41:06 by abouabba          #+#    #+#             */
-/*   Updated: 2025/02/22 17:36:32 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/03/03 14:41:43 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,18 +108,19 @@ int main (int ac, char **av)
 		free_map(game.map);
 		return (1);
 	}
-    game.mlx = mlx_init();
-    game.win = mlx_new_window( game.mlx, 64 * 28, 13 * 64, "so_long");
-	game.player = mlx_xpm_file_to_image(game.mlx, "./textures/player.xpm", &game.width, &game.height);
-	game.collectible = mlx_xpm_file_to_image(game.mlx, "./textures/collectible.xpm", &game.width, &game.height);
-	game.empty = mlx_xpm_file_to_image(game.mlx, "./textures/empty.xpm", &game.width, &game.height);
-	game.exit = mlx_xpm_file_to_image(game.mlx, "./textures/door.xpm", &game.width, &game.height);
-	game.wall = mlx_xpm_file_to_image(game.mlx, "./textures/wall.xpm", &game.width, &game.height);
-	mlx_put_image_to_window(game.mlx, game.win, game.player, 0, 0);
-	mlx_put_image_to_window(game.mlx, game.win, game.collectible, 200, 200);
-	mlx_put_image_to_window(game.mlx, game.win, game.exit, 200, 300);
-	mlx_put_image_to_window(game.mlx, game.win, game.empty, 130, 120);
-	mlx_put_image_to_window(game.mlx, game.win, game.wall, 100, 100);
-    mlx_loop(game.mlx);
+	flood_fill(game.copy, game.height, game.width);
+    // game.mlx = mlx_init();
+    // game.win = mlx_new_window( game.mlx, 64 * 28, 13 * 64, "so_long");
+	// game.player = mlx_xpm_file_to_image(game.mlx, "./textures/player.xpm", &game.width, &game.height);
+	// game.collectible = mlx_xpm_file_to_image(game.mlx, "./textures/collectible.xpm", &game.width, &game.height);
+	// game.empty = mlx_xpm_file_to_image(game.mlx, "./textures/empty.xpm", &game.width, &game.height);
+	// game.exit = mlx_xpm_file_to_image(game.mlx, "./textures/door.xpm", &game.width, &game.height);
+	// game.wall = mlx_xpm_file_to_image(game.mlx, "./textures/wall.xpm", &game.width, &game.height);
+	// mlx_put_image_to_window(game.mlx, game.win, game.player, 0, 0);
+	// mlx_put_image_to_window(game.mlx, game.win, game.collectible, 200, 200);
+	// mlx_put_image_to_window(game.mlx, game.win, game.exit, 200, 300);
+	// mlx_put_image_to_window(game.mlx, game.win, game.empty, 130, 120);
+	// mlx_put_image_to_window(game.mlx, game.win, game.wall, 100, 100);
+    // mlx_loop(game.mlx);
 	return (0);
 }
