@@ -26,6 +26,8 @@ char **copy_map(char **map, int height)
 	return (map_copy);
 }
 
+
+
 void	floodfill(char **map, int x, int y)
 {
 	if (map[y][x] == '1' || map[y][x] == 'F')
