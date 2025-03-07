@@ -6,7 +6,7 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 13:41:06 by abouabba          #+#    #+#             */
-/*   Updated: 2025/03/03 14:41:43 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/03/07 22:59:15 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ char **store_map_to_2d_array(char *file_name)
 int main (int ac, char **av)
 {
 	t_game	game;
-	
+
 	if (ac != 2)
 		return (1);
 	if (!in_valid_ber_file(av[1]))
@@ -108,7 +108,10 @@ int main (int ac, char **av)
 		free_map(game.map);
 		return (1);
 	}
-	flood_fill(game.copy, game.height, game.width);
+	game.x = 2;
+	game.y = 1;
+	flood_fill(game.copy, game.x, game.y);
+	check_valid_path(game.copy, game.height, game.width);
     // game.mlx = mlx_init();
     // game.win = mlx_new_window( game.mlx, 64 * 28, 13 * 64, "so_long");
 	// game.player = mlx_xpm_file_to_image(game.mlx, "./textures/player.xpm", &game.width, &game.height);
