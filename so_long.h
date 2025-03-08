@@ -6,7 +6,7 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 22:05:07 by abouabba          #+#    #+#             */
-/*   Updated: 2025/03/08 00:31:19 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/03/08 03:23:22 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ typedef struct s_game
 }				t_game;
 
 int		count_map_lines(char *file_name);
-char	**store_map_to_2d_array(char *file_name);
+char	**store_map_to_2d_array(char *file_name, int height);
 int		in_valid_ber_file(char *file_name);
 void	free_map(char **map);
 int		is_map_valid_by_walls(char **map, int height, int width);

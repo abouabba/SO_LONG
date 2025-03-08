@@ -6,7 +6,7 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 16:42:10 by abouabba          #+#    #+#             */
-/*   Updated: 2025/03/07 23:15:05 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/03/08 03:25:11 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,3 +84,5 @@ int	is_map_valid_chars(char **map)
 		return (0);
 	return (1);
 }
+
+// void	position_player(game);
