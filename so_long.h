@@ -6,7 +6,7 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 22:05:07 by abouabba          #+#    #+#             */
-/*   Updated: 2025/03/07 22:55:06 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/03/08 00:31:19 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ typedef struct s_game
 	void		*player;
 	void		*collectible;
 	void		*exit;
+	void		*right;
+	void		*left;
 	char		**copy;
 	char		**map;
 	int			width;

@@ -51,15 +51,12 @@ void	check_valid_path(char **map, int height, int width)
 		j = 0;
 		while (j < width)
 		{
-			printf("%c", map[i][j]);
 			if (map[i][j] == 'C' || map[i][j] == 'E')
 			{
-				print_error("hhhhh");
 				return ;
 			}
 			j++;
 		}
-		printf("\n");
 		i++;
 	}
 }
