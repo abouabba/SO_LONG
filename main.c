@@ -6,7 +6,7 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 13:41:06 by abouabba          #+#    #+#             */
-/*   Updated: 2025/03/08 23:00:42 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/03/09 01:23:24 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int count_map_lines(char *file_name)
 	return (height);
 }
 
-char **store_map_to_2d_array(char *file_name, int *height)
+char **store_map_to_2d_array(char *file_name, int height)
 {
 	int		fd;
 	int		i;
@@ -56,10 +56,10 @@ char **store_map_to_2d_array(char *file_name, int *height)
 	char 	**map;
 	char	*line;
 
-	*height = count_map_lines(file_name);
+	height = count_map_lines(file_name);
 	if (height <= 0)
 	return (0);
-	map = malloc((*height + 1) * sizeof(char *));
+	map = malloc((height + 1) * sizeof(char *));
 	if (!map)
 	return (NULL);
 	fd = open(file_name, O_RDONLY);
@@ -79,50 +79,6 @@ char **store_map_to_2d_array(char *file_name, int *height)
 	map[i] = NULL;
 	close(fd);
 	return (map);
-}
-
-int main (int ac, char **av)
-{
-	t_game	*game;
-
-	if (ac != 2)
-	{
-		print_error("Error\n!In valid file");
-		return (1);
-	}
-	if (!in_valid_ber_file(av[1]))
-	{
-		print_error("Error\n!file_name is not valid");
-		return (1);
-	}
-	game = malloc(sizeof(t_game));
-	if (!game)
-		return (1);
-	game->map = store_map_to_2d_array(av[1], &game->height);
-	if (!game->map)
-	{
-		print_error("Error\n!in valid map");
-		free(game);
-		return (1);
-	}
-	game->height = count_map_lines(av[1]);
-	game->width = ft_strlen(game->map[0]);
-	game->copy = copy_map(game->map, game->height);
-	if (!is_map_valid_by_walls(game->map, game->height, game->width) ||
-		!is_map_rectangular(game->map) || !is_map_valid_chars(game->map))
-	{
-		print_error("Error\n!In valid map");
-		free_map(game->map);
-		free(game);
-		return (1);
-	}
-	position_player(game);
-	flood_fill(game, game->x, game->y);
-	check_valid_path(game->copy, game->height, game->width);
-	free_map(game->map);
-	free_map(game->copy);
-	free (game);
-	return (0);
 }
 
 void position_player(t_game *game)
@@ -146,3 +102,65 @@ void position_player(t_game *game)
 		i++;
 	}
 }
+void f(t_game *game)
+{
+	int i = 0, j = 0;;
+	while (i < game->height)
+	{
+		j = 0;
+		while (j <= game->width)
+		{
+			if (game->copy[i][j] == '\0')
+				game->copy[i][j] = '\n';
+			printf("%c", game->copy[i][j]);
+			j++;
+		}
+		i++;
+	}
+}
+
+int main (int ac, char **av)
+{
+	t_game	*game;
+
+	if (ac != 2)
+	{
+		print_error("Error\n!In valid file");
+		return (1);
+	}
+	if (!in_valid_ber_file(av[1]))
+	{
+		print_error("Error\n!file_name is not valid");
+		return (1);
+	}
+	game = malloc(sizeof(t_game));
+	if (!game)
+		return (1);
+	game->map = store_map_to_2d_array(av[1], game->height);
+	if (!game->map)
+	{
+		print_error("Error\n!in valid map");
+		free(game);
+		return (1);
+	}
+	game->height = count_map_lines(av[1]);
+	game->width = ft_strlen(game->map[0]);
+	game->copy = copy_map(game->map, game->height);
+	if (!is_map_valid_by_walls(game->map, game->height, game->width) ||
+		!is_map_rectangular(game->map) || !is_map_valid_chars(game->map))
+	{
+		print_error("Error\n!In valid map");
+		free_map(game->map);
+		free(game);
+		return (1);
+	}
+	position_player(game);
+	flood_fill(game, game->x, game->y);
+	check_valid_path(game);
+	f(game);
+	free_map(game->map);
+	free_map(game->copy);
+	free (game);
+	return (0);
+}
+

@@ -30,7 +30,6 @@ char **copy_map(char **map, int height)
 
 void	flood_fill(t_game *game, int x, int y)
 {
-	printf ("%c-----------\n", game->copy[x][y]);
 	if (game->copy[x][y] == '1' || game->copy[x][y] == 'F')
 		return ;
 
@@ -41,20 +40,21 @@ void	flood_fill(t_game *game, int x, int y)
 	flood_fill(game, x, y - 1);
 }
 
-void	check_valid_path(char **map, int height, int width)
+void	check_valid_path(t_game *game)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (i < height)
+	while (i < game->height)
 	{
 		j = 0;
-		while (j < width)
+		while (j < game->width)
 		{
-			if (map[i][j] == 'C' || map[i][j] == 'E')
+			if (game->copy[i][j] == 'C' || game->copy[i][j] == 'E')
 			{
-				print_error("Error\n!In valid mappppp");
+				print_error("Error\n!In valid map");
+				free_map(game->copy);
 				return ;
 			}
 			j++;
