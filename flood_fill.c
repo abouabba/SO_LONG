@@ -35,7 +35,11 @@ void	flood_fill(t_game *game, int x, int y)
 {
 	if (game->copy[x][y] == '1' || game->copy[x][y] == 'F')
 		return ;
-
+	if (game->copy[x][y] == 'E')
+	{
+		game->copy[x][y] = 'F';
+		return ;
+	}
 	game->copy[x][y] = 'F';
 	flood_fill(game, x + 1, y);
 	flood_fill(game, x - 1, y);
@@ -58,7 +62,7 @@ void	check_valid_path(t_game *game)
 			{
 				print_error("Error\n!In valid map");
 				free_map(game->copy);
-				return ;
+				exit(1);
 			}
 			j++;
 		}

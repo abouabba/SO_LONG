@@ -6,7 +6,7 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 16:35:02 by abouabba          #+#    #+#             */
-/*   Updated: 2025/03/09 08:40:55 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/03/09 15:00:11 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,15 +72,15 @@ void	render_map(t_game *game)
 		while (game->map[x][y])
 		{
 			if (game->map[x][y] == '1')
-				mlx_put_image_to_window(game->mlx, game->win, game->wall, x * 40, y * 40);
+				mlx_put_image_to_window(game->mlx, game->win, game->wall, y * 40, x * 40);
 			else if (game->map[x][y] == '0')
-				mlx_put_image_to_window(game->mlx, game->win, game->empty, x * 40, y * 40);
+				mlx_put_image_to_window(game->mlx, game->win, game->empty, y * 40, x * 40);
 			else if (game->map[x][y] == 'C')
-				mlx_put_image_to_window(game->mlx, game->win, game->collectible, x * 40, y * 40);
+				mlx_put_image_to_window(game->mlx, game->win, game->collectible, y * 40, x * 40);
 			else if (game->map[x][y] == 'P')
-				mlx_put_image_to_window(game->mlx, game->win, game->player, x * 40, y * 40);
+				mlx_put_image_to_window(game->mlx, game->win, game->player, y * 40, x * 40);
 			else if (game->map[x][y] == 'E')
-				mlx_put_image_to_window(game->mlx, game->win, game->exit, x * 40, y * 40);
+				mlx_put_image_to_window(game->mlx, game->win, game->exit, y * 40, x * 40);
 			y++;
 		}
 		x++;

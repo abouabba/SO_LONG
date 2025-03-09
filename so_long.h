@@ -6,14 +6,14 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 22:05:07 by abouabba          #+#    #+#             */
-/*   Updated: 2025/03/09 08:12:12 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/03/09 14:50:04 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "../so_long/get_next_line/get_next_line.h"
+# include "./get_next_line/get_next_line.h"
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
