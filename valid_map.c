@@ -6,11 +6,51 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 16:42:10 by abouabba          #+#    #+#             */
-/*   Updated: 2025/03/08 03:25:11 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/03/09 03:19:20 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	store_map(int fd, char **map)
+{
+	char	*line;
+	int		i;
+	int		len;
+
+	i = 0;
+	line = get_next_line(fd);
+	if (line)
+		len = ft_strlen(line);
+	while (line)
+	{
+		if (line[ft_strlen(line) - 1] == '\n')
+			line[ft_strlen(line) - 1] = '\0';
+		map[i] = line;
+		i++;
+		line = get_next_line(fd);
+	}
+	map[i] = NULL;
+}
+
+char **store_map_to_2d_array(char *file_name, int height)
+{
+	int		fd;
+	char 	**map;
+
+	height = count_map_lines(file_name);
+	if (height <= 0)
+	return (0);
+	map = malloc((height + 1) * sizeof(char *));
+	if (!map)
+	return (NULL);
+	fd = open(file_name, O_RDONLY);
+	if (fd == -1)
+		return (NULL);
+	store_map(fd, map);
+	close(fd);
+	return (map);
+}
 
 int	is_map_valid_by_walls(char **map, int height, int width)
 {
@@ -51,38 +91,31 @@ int	is_map_rectangular(char **map)
 	return (1);
 }
 
-int	is_map_valid_chars(char **map)
+int	is_map_valid_chars(t_game *game)
 {
 	int	i;
 	int	j;
-	int	c_count;
-	int	P_count;
-	int	e_count;
 	
-	i = 0;
-	c_count = 0;
-	P_count = 0;
-	e_count = 0;
-	while (map[i])
+	i = -1;
+	game->c_count = 0;
+	game->P_count = 0;
+	game->e_count = 0;
+	while (game->map[++i])
 	{
-		j = 0;
-		while (map[i][j])
+		j = -1;
+		while (game->map[i][++j])
 		{
-			if (map[i][j] == 'P')
-				P_count++;
-			else if (map[i][j] == 'E')
-				e_count++;
-			else if (map[i][j] == 'C')
-				c_count++;
-			else if (map[i][j] != '1' && map[i][j] != '0')
+			if (game->map[i][j] == 'P')
+				game->P_count++;
+			else if (game->map[i][j] == 'E')
+				game->e_count++;
+			else if (game->map[i][j] == 'C')
+				game->c_count++;
+			else if (game->map[i][j] != '1' && game->map[i][j] != '0')
 				return (0);
-			j++;
 		}
-		i++;
 	}
-	if (c_count < 1 || e_count != 1 || P_count != 1)
+	if (game->c_count < 1 || game->e_count != 1 || game->P_count != 1)
 		return (0);
 	return (1);
 }
-
-// void	position_player(game);

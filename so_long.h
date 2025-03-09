@@ -6,7 +6,7 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 22:05:07 by abouabba          #+#    #+#             */
-/*   Updated: 2025/03/09 00:49:54 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/03/09 02:47:34 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,9 @@ typedef struct s_game
 	int			height;
 	int 		x;
 	int 		y;
-	int 		x_collectible;
+	int			c_count;
+	int			P_count;
+	int			e_count;
 }				t_game;
 
 int		count_map_lines(char *file_name);
@@ -48,7 +50,7 @@ void	free_map(char **map);
 int		is_map_valid_by_walls(char **map, int height, int width);
 void	print_error(char *msg);
 int		is_map_rectangular(char **map);
-int		is_map_valid_chars(char **map);
+int		is_map_valid_chars(t_game *game);
 char	**copy_map(char **map, int height);
 void	flood_fill(t_game *game, int x, int y);
 void	check_valid_path(t_game *game);
