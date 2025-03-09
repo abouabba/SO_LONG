@@ -6,7 +6,7 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 13:41:06 by abouabba          #+#    #+#             */
-/*   Updated: 2025/03/09 03:35:53 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/03/09 08:36:23 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,14 +131,19 @@ int main (int ac, char **av)
 	check_argument(ac, av);
 	game = malloc(sizeof(t_game));
 	if (!game)
-		return (1);
+	{
+		print_error("Error\n!Memory allocation failed");
+		exit(1);
+	}
 	check_valide(av, game);
 	position_player(game);
 	flood_fill(game, game->x, game->y);
 	check_valid_path(game);
-	f(game);
-	mlx_init();
-	mlx_new_window();
+	// f(game);
+	init_game(game);
+	load_textures(game);
+	render_map(game);
+	mlx_loop(game->mlx);
 	free_map(game->map);
 	free_map(game->copy);
 	free (game);

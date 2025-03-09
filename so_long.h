@@ -6,7 +6,7 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 22:05:07 by abouabba          #+#    #+#             */
-/*   Updated: 2025/03/09 02:47:34 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/03/09 08:12:12 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct s_game
 {
 	void		*mlx;
 	void		*win;
+	void		*img;
 	void		*wall;
 	void		*empty;
 	void		*player;
@@ -55,4 +56,7 @@ char	**copy_map(char **map, int height);
 void	flood_fill(t_game *game, int x, int y);
 void	check_valid_path(t_game *game);
 void	position_player(t_game *game);
+void	init_game(t_game *game);
+void	load_textures(t_game *game);
+void	render_map(t_game *game);
 #endif

@@ -6,7 +6,7 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 16:42:10 by abouabba          #+#    #+#             */
-/*   Updated: 2025/03/09 03:19:20 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/03/09 08:26:49 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,10 @@ char **store_map_to_2d_array(char *file_name, int height)
 	return (NULL);
 	fd = open(file_name, O_RDONLY);
 	if (fd == -1)
+	{
+		print_error("Error\n!Cannot open map file");
 		return (NULL);
+	}
 	store_map(fd, map);
 	close(fd);
 	return (map);

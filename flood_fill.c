@@ -7,7 +7,10 @@ char **copy_map(char **map, int height)
 
 	map_copy = malloc((height + 1) * sizeof(char *));
 	if (!map_copy)
+	{
+		print_error("Error\nMemory allocation failed fot map copy");
 		return (NULL);
+	}
 	i = 0;
 
 	while (i < height)
