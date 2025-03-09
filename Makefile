@@ -1,6 +1,6 @@
 NAME = so_long
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -fPIE
 
 SRCS = main.c \
 	   get_next_line/get_next_line.c \
@@ -11,18 +11,18 @@ SRCS = main.c \
 
 OBJS = $(SRCS:.c=.o)
 
-MLX_FLAGS = -L ./mlx -lmlx  -lXext -lX11
+LDFLAGS = -L ./mlx -lmlx -lXext -lX11 -pie
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) $(MLX_FLAGS) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) -o $(NAME)
 
 %.o: %.c
 	$(CC) $(CFLAGS)  -c $< -o $@
 
 clean:
-	rm -f $(OBJS)
+	rm -f *.o get_next_line/*.o $(NAME)
 
 fclean: clean
 	rm -f $(NAME)

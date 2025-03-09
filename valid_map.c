@@ -16,12 +16,9 @@ void	store_map(int fd, char **map)
 {
 	char	*line;
 	int		i;
-	int		len;
 
 	i = 0;
 	line = get_next_line(fd);
-	if (line)
-		len = ft_strlen(line);
 	while (line)
 	{
 		if (line[ft_strlen(line) - 1] == '\n')
