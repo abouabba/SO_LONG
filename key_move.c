@@ -6,7 +6,7 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 12:01:15 by abouabba          #+#    #+#             */
-/*   Updated: 2025/03/10 13:38:17 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/03/10 13:40:48 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void move_up(t_game *game)
 
 void move_right(t_game *game)
 {
-	if (game->map[game->x][game->x + 1] != '1')
+	if (game->map[game->x][game->y + 1] != '1')
 	{
 		game->map[game->x][game->y] = '0';
 		game->y++;
