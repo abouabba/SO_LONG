@@ -1,13 +1,15 @@
 NAME = so_long
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -fPIE
+CFLAGS = -Wall -Wextra -Werror 
 
 SRCS = main.c \
 	   get_next_line/get_next_line.c \
        get_next_line/get_next_line_utils.c \
        valid_map.c \
 	   utils.c \
-	   flood_fill.c
+	   flood_fill.c \
+	   ft_move_player.c \
+	   key_move.c
 
 OBJS = $(SRCS:.c=.o)
 

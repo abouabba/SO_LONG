@@ -6,7 +6,7 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 22:05:07 by abouabba          #+#    #+#             */
-/*   Updated: 2025/03/09 14:50:04 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/03/10 12:11:33 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,11 @@ void	position_player(t_game *game);
 void	init_game(t_game *game);
 void	load_textures(t_game *game);
 void	render_map(t_game *game);
+int   handle_keypress(int keycode, t_game *game);
+void check_valide(char **av, t_game *game);
+void move_up(t_game *game);
+void move_right(t_game *game);
+void move_down(t_game *game);
+void move_left(t_game *game);
+
 #endif

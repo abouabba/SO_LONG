@@ -6,7 +6,7 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 13:41:06 by abouabba          #+#    #+#             */
-/*   Updated: 2025/03/09 15:17:31 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/03/10 12:18:02 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,29 +101,6 @@ void	check_argument(int ac, char **av)
 	}
 }
 
-void check_valide(char **av, t_game *game)
-{
-	game->map = store_map_to_2d_array(av[1], game->height);
-	if (!game->map)
-	{
-		print_error("Error\n!in valid map");
-		free(game);
-		exit (1);
-	}
-	game->height = 0;
-	game->height = count_map_lines(av[1]);
-	game->width = ft_strlen(game->map[0]);
-	game->copy = copy_map(game->map, game->height);
-	if (!is_map_valid_by_walls(game->map, game->height, game->width) ||
-		!is_map_rectangular(game->map) || !is_map_valid_chars(game))
-	{
-		print_error("Error\n!In valid map");
-		free_map(game->map);
-		free(game);
-		exit (1);
-	}
-}
-
 int main (int ac, char **av)
 {
 	t_game	*game;
@@ -143,10 +120,10 @@ int main (int ac, char **av)
 	init_game(game);
 	load_textures(game);
 	render_map(game);
+	mlx_key_hook(game->win, handle_keypress, game);
 	mlx_loop(game->mlx);
 	free_map(game->map);
 	free_map(game->copy);
 	free (game);
 	return (0);
 }
-
