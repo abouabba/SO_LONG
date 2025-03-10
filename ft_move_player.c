@@ -46,7 +46,7 @@ int   handle_keypress(int keycode, t_game *game)
 		move_down(game);
 	if (keycode == 97) // A
 		move_left(game);
-	if (keycode == 65307) //esc
-		exit(1);
+	if (keycode == 65307) //Escape
+		exit(0);
 	return(0); 
 }

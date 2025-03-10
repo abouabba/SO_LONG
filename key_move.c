@@ -14,24 +14,40 @@
 
 void move_up(t_game *game)
 {
-	if (game->map[game->x - 1][game->y] != '1')
-		game->x--;
+    if (game->map[game->y - 1][game->x] != '1')
+    {
+        game->map[game->y][game->x] = '0';
+        game->y--;
+        game->map[game->y][game->x] = 'P';
+    }
 }
 
 void move_right(t_game *game)
 {
-	if (game->map[game->x][game->y + 1] != '1')
-		game->y++;
+    if (game->map[game->y][game->x + 1] != '1')
+    {
+        game->map[game->y][game->x] = '0';
+        game->x++;
+        game->map[game->y][game->x] = 'P';
+    }
 }
 
 void move_down(t_game *game)
 {
-	if (game->map[game->x + 1][game->y] != '1')
-		game->x++;
+    if (game->map[game->y + 1][game->x] != '1')
+    {
+        game->map[game->y][game->x] = '0';
+        game->y++;
+        game->map[game->y][game->x] = 'P';
+    }
 }
 
 void move_left(t_game *game)
 {
-	if (game->map[game->x][game->y - 1] != '1')
-		game->y--;
+    if (game->map[game->y][game->x - 1] != '1')
+    {
+        game->map[game->y][game->x] = '0';
+        game->x--;
+        game->map[game->y][game->x] = 'P';
+    }
 }
