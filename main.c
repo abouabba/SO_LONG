@@ -6,7 +6,7 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 13:41:06 by abouabba          #+#    #+#             */
-/*   Updated: 2025/03/10 15:25:32 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/03/10 17:24:04 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,18 @@ void	check_argument(int ac, char **av)
 	}
 }
 
+void ft_exit(t_game *game)
+{
+	if (game->c_count == 0)
+	{
+		free_map(game->map);
+		free_map(game->copy);
+		free(game);
+		write (1, "you win!\n", 9);
+		exit(0);
+	}
+}
+
 int main (int ac, char **av)
 {
 	t_game	*game;
@@ -121,8 +133,5 @@ int main (int ac, char **av)
 	render_map(game);
 	mlx_key_hook(game->win, handle_keypress, game);
 	mlx_loop(game->mlx);
-	free_map(game->map);
-	free_map(game->copy);
-	free (game);
 	return (0);
 }

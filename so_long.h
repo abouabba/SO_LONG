@@ -6,7 +6,7 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 22:05:07 by abouabba          #+#    #+#             */
-/*   Updated: 2025/03/10 15:36:09 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/03/10 17:22:17 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +77,6 @@ void move_up(t_game *game);
 void move_right(t_game *game);
 void move_down(t_game *game);
 void move_left(t_game *game);
+void ft_exit(t_game *game);
 
 #endif
