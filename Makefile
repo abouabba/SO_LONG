@@ -13,7 +13,7 @@ SRCS = main.c \
 
 OBJS = $(SRCS:.c=.o)
 
-LDFLAGS = -L ./mlx -lmlx -lXext -lX11 -pie
+LDFLAGS = -L ./mlx -lmlx -lXext -lX11 
 
 all: $(NAME)
 
@@ -24,9 +24,9 @@ $(NAME): $(OBJS)
 	$(CC) $(CFLAGS)  -c $< -o $@
 
 clean:
-	rm -f *.o get_next_line/*.o $(NAME)
+	rm -f $(OBJS)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME) clean
 
 re: fclean all
