@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   flood_fill.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/10 13:39:47 by abouabba          #+#    #+#             */
+/*   Updated: 2025/03/10 13:39:48 by abouabba         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 char **copy_map(char **map, int height)
@@ -28,8 +40,6 @@ char **copy_map(char **map, int height)
 	map_copy[height] = NULL;
 	return (map_copy);
 }
-
-
 
 void	flood_fill(t_game *game, int x, int y)
 {

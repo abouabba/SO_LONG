@@ -6,7 +6,7 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 11:58:39 by abouabba          #+#    #+#             */
-/*   Updated: 2025/03/10 11:58:59 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/03/10 13:33:56 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,14 @@ int   handle_keypress(int keycode, t_game *game)
 	printf ("key pressed: %d ---- %d\n", keycode,   game->c_count);
 	if (keycode == 119) // W
 		move_up(game);
-	if (keycode == 100) // D
+	else if (keycode == 100) // D
 		move_right(game);
-	if (keycode == 115) // S
+	else if (keycode == 115) // S
 		move_down(game);
-	if (keycode == 97) // A
+	else if (keycode == 97) // A
 		move_left(game);
-	if (keycode == 65307) //Escape
+	else if (keycode == 65307) //Escape
 		exit(0);
+	render_map(game);
 	return(0); 
 }
