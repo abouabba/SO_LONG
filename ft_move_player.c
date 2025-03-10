@@ -6,7 +6,7 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 11:58:39 by abouabba          #+#    #+#             */
-/*   Updated: 2025/03/10 13:33:56 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/03/10 15:38:13 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,16 +38,21 @@ void check_valide(char **av, t_game *game)
 int   handle_keypress(int keycode, t_game *game)
 {
 	printf ("key pressed: %d ---- %d\n", keycode,   game->c_count);
-	if (keycode == 119) // W
+	if (keycode == KEY_W || keycode == UP) // W
 		move_up(game);
-	else if (keycode == 100) // D
+	else if (keycode == KEY_D || keycode == RIGHT) // D
 		move_right(game);
-	else if (keycode == 115) // S
+	else if (keycode == KEY_S || keycode == DOWN) // S
 		move_down(game);
-	else if (keycode == 97) // A
+	else if (keycode == KEY_A || keycode == LEFT) // A
 		move_left(game);
 	else if (keycode == 65307) //Escape
+	{
+		free_map(game->map);
+		free_map(game->copy);
+		free(game);
 		exit(0);
+	}
 	render_map(game);
 	return(0); 
 }

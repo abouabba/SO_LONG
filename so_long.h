@@ -6,7 +6,7 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 22:05:07 by abouabba          #+#    #+#             */
-/*   Updated: 2025/03/10 12:11:33 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/03/10 15:36:09 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,18 @@ typedef struct s_game
 	int			P_count;
 	int			e_count;
 }				t_game;
+
+#define KEY_W 119
+#define KEY_S 115
+#define KEY_A 97
+#define KEY_D 100
+#define ESC 65307
+
+#define UP 65362
+#define DOWN 65364
+#define RIGHT 65363
+#define LEFT 65361
+
 
 int		count_map_lines(char *file_name);
 char	**store_map_to_2d_array(char *file_name, int height);

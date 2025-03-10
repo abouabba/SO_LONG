@@ -6,7 +6,7 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 13:41:06 by abouabba          #+#    #+#             */
-/*   Updated: 2025/03/10 12:18:02 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/03/10 15:25:32 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ void f(t_game *game)
 		{
 			if (game->copy[i][j] == '\0')
 				game->copy[i][j] = '\n';
-			printf("%c", game->copy[i][j]);
 			j++;
 		}
 		i++;
