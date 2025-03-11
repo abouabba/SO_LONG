@@ -6,11 +6,20 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 12:01:15 by abouabba          #+#    #+#             */
-/*   Updated: 2025/03/10 17:23:03 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/03/10 23:02:05 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	ft_putnbr(int number)
+{
+	char str[] = "0123456789";
+
+	if (number >= 10)
+		ft_putnbr(number / 10);
+	write (1, &str[number % 10], 1);
+}
 
 void move_up(t_game *game)
 {
@@ -25,6 +34,9 @@ void move_up(t_game *game)
 		game->map[game->x][game->y] = '0';
 		game->x--;
 		game->map[game->x][game->y] = 'P';
+		game->move++;
+		ft_putnbr(game->move);
+		write (1, "\n", 1);
 	}
 }
 
@@ -41,6 +53,9 @@ void move_right(t_game *game)
 		game->map[game->x][game->y] = '0';
 		game->y++;
 		game->map[game->x][game->y] = 'P';
+		game->move++;
+		ft_putnbr(game->move);
+		write (1, "\n", 1);
 	}
 }
 
@@ -57,6 +72,9 @@ void move_down(t_game *game)
 		game->map[game->x][game->y] = '0';
 		game->x++;
 		game->map[game->x][game->y] = 'P';
+		game->move++;
+		ft_putnbr(game->move);
+		write (1, "\n", 1);
 	}
 }
 
@@ -73,5 +91,8 @@ void move_left(t_game *game)
 		game->map[game->x][game->y] = '0';
 		game->y--;
 		game->map[game->x][game->y] = 'P';
+		game->move++;
+		ft_putnbr(game->move);
+		write (1, "\n", 1);
 	}
 }

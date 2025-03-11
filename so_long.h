@@ -6,7 +6,7 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 22:05:07 by abouabba          #+#    #+#             */
-/*   Updated: 2025/03/10 17:22:17 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/03/10 23:30:15 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,24 +36,25 @@ typedef struct s_game
 	char		**copy;
 	char		**map;
 	int			width;
-	int			height;
+	int			height; // 50 max
 	int 		x;
 	int 		y;
 	int			c_count;
 	int			P_count;
 	int			e_count;
+	int			move;
 }				t_game;
 
-#define KEY_W 119
-#define KEY_S 115
-#define KEY_A 97
-#define KEY_D 100
-#define ESC 65307
+# define KEY_W 119
+# define KEY_S 115
+# define KEY_A 97
+# define KEY_D 100
+# define ESC 65307
 
-#define UP 65362
-#define DOWN 65364
-#define RIGHT 65363
-#define LEFT 65361
+# define UP 65362
+# define DOWN 65364
+# define RIGHT 65363
+# define LEFT 65361
 
 
 int		count_map_lines(char *file_name);
@@ -71,12 +72,13 @@ void	position_player(t_game *game);
 void	init_game(t_game *game);
 void	load_textures(t_game *game);
 void	render_map(t_game *game);
-int   handle_keypress(int keycode, t_game *game);
-void check_valide(char **av, t_game *game);
-void move_up(t_game *game);
-void move_right(t_game *game);
-void move_down(t_game *game);
-void move_left(t_game *game);
-void ft_exit(t_game *game);
+int		handle_keypress(int keycode, t_game *game);
+void	check_valide(char **av, t_game *game);
+void	move_up(t_game *game);
+void	move_right(t_game *game);
+void	move_down(t_game *game);
+void	move_left(t_game *game);
+void	ft_exit(t_game *game);
+void	ft_putnbr(int number);
 
 #endif

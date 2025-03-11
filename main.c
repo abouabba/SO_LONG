@@ -6,7 +6,7 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 13:41:06 by abouabba          #+#    #+#             */
-/*   Updated: 2025/03/10 17:24:04 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/03/11 00:26:05 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,22 +69,6 @@ void position_player(t_game *game)
 		i++;
 	}
 }
-void f(t_game *game)
-{
-	int i = 0, j = 0;;
-	while (i < game->height)
-	{
-		j = 0;
-		while (j <= game->width)
-		{
-			if (game->copy[i][j] == '\0')
-				game->copy[i][j] = '\n';
-			j++;
-		}
-		i++;
-	}
-}
-
 
 void	check_argument(int ac, char **av)
 {
@@ -97,18 +81,6 @@ void	check_argument(int ac, char **av)
 	{
 		print_error("Error\n!file_name is not valid");
 		exit (1);
-	}
-}
-
-void ft_exit(t_game *game)
-{
-	if (game->c_count == 0)
-	{
-		free_map(game->map);
-		free_map(game->copy);
-		free(game);
-		write (1, "you win!\n", 9);
-		exit(0);
 	}
 }
 
@@ -127,7 +99,6 @@ int main (int ac, char **av)
 	position_player(game);
 	flood_fill(game, game->x, game->y);
 	check_valid_path(game);
-	f(game);
 	init_game(game);
 	load_textures(game);
 	render_map(game);

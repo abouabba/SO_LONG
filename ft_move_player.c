@@ -6,7 +6,7 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 11:58:39 by abouabba          #+#    #+#             */
-/*   Updated: 2025/03/10 15:38:13 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/03/11 00:40:52 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,10 @@ void check_valide(char **av, t_game *game)
 		free(game);
 		exit (1);
 	}
-	game->height = 0;
 	game->height = count_map_lines(av[1]);
 	game->width = ft_strlen(game->map[0]);
+	if (game->height >= 50 || game->width > 97)
+		ft_exit(game);
 	game->copy = copy_map(game->map, game->height);
 	if (!is_map_valid_by_walls(game->map, game->height, game->width) ||
 		!is_map_rectangular(game->map) || !is_map_valid_chars(game))
@@ -37,7 +38,6 @@ void check_valide(char **av, t_game *game)
 
 int   handle_keypress(int keycode, t_game *game)
 {
-	printf ("key pressed: %d ---- %d\n", keycode,   game->c_count);
 	if (keycode == KEY_W || keycode == UP) // W
 		move_up(game);
 	else if (keycode == KEY_D || keycode == RIGHT) // D
@@ -47,12 +47,35 @@ int   handle_keypress(int keycode, t_game *game)
 	else if (keycode == KEY_A || keycode == LEFT) // A
 		move_left(game);
 	else if (keycode == 65307) //Escape
+		ft_exit(game);
+	render_map(game);
+	return(0); 
+}
+
+void ft_exit(t_game *game)
+{
+	if (game->height >= 50 || game->width > 97)
+	{
+		free_map(game->map);
+		free(game);
+		write (1, "Error\n!In valid size\n", 21);
+		exit(1);
+	}
+	else if (game->c_count == 0)
 	{
 		free_map(game->map);
 		free_map(game->copy);
 		free(game);
+		write (1, "you win!\n", 9);
 		exit(0);
 	}
-	render_map(game);
-	return(0); 
+	else if (game->c_count != 0)
+	{
+		free_map(game->map);
+		free_map(game->copy);
+		free(game);
+		write (1, "Error\n!you lose", 20);
+		exit(1);
+	}
+	printf ("=--==-=-=-=-=--==--=-=-=--=+_++_+_+_+_+_\n");
 }
