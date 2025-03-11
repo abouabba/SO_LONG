@@ -6,11 +6,11 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 22:05:07 by abouabba          #+#    #+#             */
-/*   Updated: 2025/03/11 00:57:21 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/03/11 03:51:27 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef SO_LONG_H
+#ifndef SO_LONG_H
 # define SO_LONG_H
 
 # include "./get_next_line/get_next_line.h"
@@ -36,11 +36,11 @@ typedef struct s_game
 	char		**copy;
 	char		**map;
 	int			width;
-	int			height; // 50 max
-	int 		x;
-	int 		y;
+	int			height;
+	int			x;
+	int			y;
 	int			c_count;
-	int			P_count;
+	int			p_count;
 	int			e_count;
 	int			move;
 }				t_game;
@@ -55,7 +55,6 @@ typedef struct s_game
 # define DOWN 65364
 # define RIGHT 65363
 # define LEFT 65361
-
 
 int		count_map_lines(char *file_name);
 char	**store_map_to_2d_array(char *file_name, int height);

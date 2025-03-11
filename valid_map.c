@@ -6,7 +6,7 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 16:42:10 by abouabba          #+#    #+#             */
-/*   Updated: 2025/03/11 00:56:58 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/03/11 03:57:36 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,17 @@ void	store_map(int fd, char **map)
 	map[i] = NULL;
 }
 
-char **store_map_to_2d_array(char *file_name, int height)
+char	**store_map_to_2d_array(char *file_name, int height)
 {
 	int		fd;
-	char 	**map;
+	char	**map;
 
 	height = count_map_lines(file_name);
 	if (height <= 0)
-	return (0);
+		return (0);
 	map = malloc((height + 1) * sizeof(char *));
 	if (!map)
-	return (NULL);
+		return (NULL);
 	fd = open(file_name, O_RDONLY);
 	if (fd == -1)
 	{
@@ -54,7 +54,7 @@ char **store_map_to_2d_array(char *file_name, int height)
 
 int	is_map_valid_by_walls(t_game *game)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < game->width)
@@ -93,10 +93,10 @@ int	is_map_valid_chars(t_game *game)
 {
 	int	i;
 	int	j;
-	
+
 	i = -1;
 	game->c_count = 0;
-	game->P_count = 0;
+	game->p_count = 0;
 	game->e_count = 0;
 	while (game->map[++i])
 	{
@@ -104,7 +104,7 @@ int	is_map_valid_chars(t_game *game)
 		while (game->map[i][++j])
 		{
 			if (game->map[i][j] == 'P')
-				game->P_count++;
+				game->p_count++;
 			else if (game->map[i][j] == 'E')
 				game->e_count++;
 			else if (game->map[i][j] == 'C')
@@ -113,7 +113,7 @@ int	is_map_valid_chars(t_game *game)
 				return (0);
 		}
 	}
-	if (game->c_count < 1 || game->e_count != 1 || game->P_count != 1)
+	if (game->c_count < 1 || game->e_count != 1 || game->p_count != 1)
 		return (0);
 	return (1);
 }

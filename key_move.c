@@ -6,7 +6,7 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 12:01:15 by abouabba          #+#    #+#             */
-/*   Updated: 2025/03/10 23:02:05 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/03/11 03:36:30 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_putnbr(int number)
 	write (1, &str[number % 10], 1);
 }
 
-void move_up(t_game *game)
+void	move_up(t_game *game)
 {
 	if (game->map[game->x - 1][game->y] != '1')
 	{
@@ -40,7 +40,7 @@ void move_up(t_game *game)
 	}
 }
 
-void move_right(t_game *game)
+void	move_right(t_game *game)
 {
 	if (game->map[game->x][game->y + 1] != '1')
 	{
@@ -59,7 +59,7 @@ void move_right(t_game *game)
 	}
 }
 
-void move_down(t_game *game)
+void	move_down(t_game *game)
 {
 	if (game->map[game->x + 1][game->y] != '1')
 	{
@@ -78,7 +78,7 @@ void move_down(t_game *game)
 	}
 }
 
-void move_left(t_game *game)
+void	move_left(t_game *game)
 {
 	if (game->map[game->x][game->y - 1] != '1')
 	{

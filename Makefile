@@ -13,7 +13,7 @@ SRCS = main.c \
 
 OBJS = $(SRCS:.c=.o)
 
-LDFLAGS = -L ./mlx -lmlx -lXext -lX11 
+LDFLAGS = -L ./mlx -lmlx -lXext -lX11
 
 all: $(NAME)
 

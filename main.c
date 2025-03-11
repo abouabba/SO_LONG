@@ -6,7 +6,7 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 13:41:06 by abouabba          #+#    #+#             */
-/*   Updated: 2025/03/11 00:26:05 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/03/11 03:44:20 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ int	in_valid_ber_file(char *file_name)
 		len++;
 	if (len < 4)
 		return (0);
-	return (file_name[len - 4] == '.' &&
-			file_name[len - 3] == 'b' &&
-			file_name[len - 2] == 'e' &&
-			file_name[len - 1] == 'r');
+	return (file_name[len - 4] == '.'
+		&& file_name[len - 3] == 'b'
+		&& file_name[len - 2] == 'e'
+		&& file_name[len - 1] == 'r');
 }
 
-int count_map_lines(char *file_name)
+int	count_map_lines(char *file_name)
 {
 	int		fd;
 	int		height;
@@ -38,20 +38,23 @@ int count_map_lines(char *file_name)
 	fd = open(file_name, O_RDONLY);
 	if (fd == -1)
 		return (-1);
-	height= 0;
-	while ((line = get_next_line(fd)))
+	height = 0;
+	line = get_next_line(fd);
+	while (line)
 	{
 		height++;
 		free(line);
+		line = get_next_line(fd);
 	}
 	close(fd);
+	free (line);
 	return (height);
 }
 
-void position_player(t_game *game)
+void	position_player(t_game *game)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (game->map[i])
@@ -84,7 +87,7 @@ void	check_argument(int ac, char **av)
 	}
 }
 
-int main (int ac, char **av)
+int	main(int ac, char **av)
 {
 	t_game	*game;
 

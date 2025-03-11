@@ -6,16 +6,16 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 13:39:47 by abouabba          #+#    #+#             */
-/*   Updated: 2025/03/10 13:39:48 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/03/11 03:32:42 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-char **copy_map(char **map, int height)
+char	**copy_map(char **map, int height)
 {
-	char **map_copy;
-	int i;
+	char	**map_copy;
+	int		i;
 
 	map_copy = malloc((height + 1) * sizeof(char *));
 	if (!map_copy)
@@ -24,7 +24,6 @@ char **copy_map(char **map, int height)
 		return (NULL);
 	}
 	i = 0;
-
 	while (i < height)
 	{
 		map_copy[i] = ft_strdup(map[i]);
