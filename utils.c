@@ -6,7 +6,7 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 16:35:02 by abouabba          #+#    #+#             */
-/*   Updated: 2025/03/11 03:55:41 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/03/11 06:21:35 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,11 +72,11 @@ void	render_map(t_game *game)
 	int	x;
 	int	y;
 
-	x = 0;
-	while (game->map[x])
+	x = -1;
+	while (game->map[++x])
 	{
-		y = 0;
-		while (game->map[x][y])
+		y = -1;
+		while (game->map[x][++y])
 		{
 			if (game->map[x][y] == '1')
 				mlx_put_image_to_window(game->mlx,
@@ -93,8 +93,6 @@ void	render_map(t_game *game)
 			else if (game->map[x][y] == 'E')
 				mlx_put_image_to_window(game->mlx,
 					game->win, game->exit, y * 40, x * 40);
-			y++;
 		}
-		x++;
 	}
 }

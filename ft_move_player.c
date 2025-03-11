@@ -6,7 +6,7 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 11:58:39 by abouabba          #+#    #+#             */
-/*   Updated: 2025/03/11 03:35:23 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/03/11 05:56:02 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,11 @@ int	handle_keypress(int keycode, t_game *game)
 	else if (keycode == KEY_A || keycode == LEFT)
 		move_left(game);
 	else if (keycode == 65307)
-		ft_exit(game);
+	{
+		free_map(game->map);
+		free(game);
+		exit(0);
+	}
 	render_map(game);
 	return (0);
 }
@@ -69,13 +73,5 @@ void	ft_exit(t_game *game)
 		free(game);
 		write (1, "you win!\n", 9);
 		exit(0);
-	}
-	else if (game->c_count != 0)
-	{
-		free_map(game->map);
-		free_map(game->copy);
-		free(game);
-		print_error("you lose\n");
-		exit(1);
 	}
 }
