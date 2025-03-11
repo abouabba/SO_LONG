@@ -7,7 +7,7 @@ SRCS = main.c \
        get_next_line/get_next_line_utils.c \
        valid_map.c \
 	   utils.c \
-	   flood_fill.c \
+	   fill_help.c \
 	   ft_move_player.c \
 	   key_move.c
 

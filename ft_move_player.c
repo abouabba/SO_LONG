@@ -50,8 +50,7 @@ int	handle_keypress(int keycode, t_game *game)
 		move_left(game);
 	else if (keycode == 65307)
 	{
-		free_map(game->map);
-		free(game);
+		free_resources(game);
 		exit(0);
 	}
 	render_map(game);
@@ -62,16 +61,32 @@ void	ft_exit(t_game *game)
 {
 	if (game->height >= 50 || game->width > 97)
 	{
-		free_map(game->map);
-		free(game);
+		free_resources(game);
+		print_error("Error\n!Map is too big");
 		exit(1);
 	}
 	else if (game->c_count == 0)
 	{
-		free_map(game->map);
-		free_map(game->copy);
+		free_resources(game);
 		free(game);
 		write (1, "you win!\n", 9);
 		exit(0);
 	}
+}
+
+void free_resources(t_game *game)
+{
+	free_image(game);
+	free_window(game);
+	if (game->mlx)
+		free(game->mlx);
+	if (game->map)
+		free_map(game->map);
+	free(game);
+}
+
+int	close_window(t_game *game)
+{
+	free_resources(game);
+	exit(0);
 }

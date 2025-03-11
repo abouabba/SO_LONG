@@ -79,5 +79,9 @@ void	move_down(t_game *game);
 void	move_left(t_game *game);
 void	ft_exit(t_game *game);
 void	ft_putnbr(int number);
+void	free_image(t_game *game);
+void	free_window(t_game *game);
+void	free_resources(t_game *game);
+int		close_window(t_game *game);
 
 #endif

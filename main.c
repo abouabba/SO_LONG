@@ -87,14 +87,6 @@ void	check_argument(int ac, char **av)
 	}
 }
 
-int	close_window(t_game *game)
-{
-	free_map(game->map);	
-	free_map(game->copy);	
-	free(game);
-	exit(0);
-}
-
 int	main(int ac, char **av)
 {
 	t_game	*game;
@@ -116,5 +108,6 @@ int	main(int ac, char **av)
 	mlx_hook(game->win, 17, 0, close_window, game);
 	mlx_key_hook(game->win, handle_keypress, game);
 	mlx_loop(game->mlx);
+	free_resources(game);
 	return (0);
 }

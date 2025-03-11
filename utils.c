@@ -51,18 +51,42 @@ void	load_textures(t_game *game)
 {
 	game->wall = mlx_xpm_file_to_image(game->mlx,
 			"textures/wall.xpm", &game->width, &game->height);
+	if (!game->wall)
+	{
+		free_resources(game);
+		print_error("Error\n!Texture loading failed");
+		exit(1);
+	}
 	game->empty = mlx_xpm_file_to_image(game->mlx,
 			"textures/empty.xpm", &game->width, &game->height);
+	if (!game->empty)
+	{
+		free_resources(game);
+		print_error("Error\n!Texture loading failed");
+		exit(1);
+	}
 	game->player = mlx_xpm_file_to_image(game->mlx,
 			"textures/player.xpm", &game->width, &game->height);
+	if (!game->player)
+	{
+		free_resources(game);
+		print_error("Error\n!Texture loading failed");
+		exit(1);
+	}
 	game->collectible = mlx_xpm_file_to_image(game->mlx,
 			"textures/collectible.xpm", &game->width, &game->height);
+	if (!game->collectible)
+		{
+			free_resources(game);
+			print_error("Error\n!Texture loading failed");
+			exit(1);
+		}
 	game->exit = mlx_xpm_file_to_image(game->mlx,
 			"textures/exit.xpm", &game->width, &game->height);
-	if (!game->wall || !game->collectible
-		|| !game->empty || !game->exit || !game->player)
+	if (!game->exit)
 	{
-		print_error("Error\n!failed to load textures");
+		free_resources(game);
+		print_error("Error\n!Texture loading failed");
 		exit(1);
 	}
 }
