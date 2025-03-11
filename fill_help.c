@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   flood_fill.c                                       :+:      :+:    :+:   */
+/*   fill_help.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 13:39:47 by abouabba          #+#    #+#             */
-/*   Updated: 2025/03/11 03:32:42 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/03/11 14:11:53 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,7 @@ char	**copy_map(char **map, int height)
 		map_copy[i] = ft_strdup(map[i]);
 		if (!map_copy[i])
 		{
-			while (--i >= 0)
-				free(map_copy[i]);
-			free(map_copy);
+			free_map(map_copy);
 			return (NULL);
 		}
 		i++;

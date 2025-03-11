@@ -6,7 +6,7 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 11:58:39 by abouabba          #+#    #+#             */
-/*   Updated: 2025/03/11 05:56:02 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/03/11 15:03:22 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ void	ft_exit(t_game *game)
 	else if (game->c_count == 0)
 	{
 		free_resources(game);
-		free(game);
 		write (1, "you win!\n", 9);
 		exit(0);
 	}
@@ -78,6 +77,7 @@ void free_resources(t_game *game)
 {
 	free_image(game);
 	free_window(game);
+	mlx_destroy_display(game->mlx);
 	if (game->mlx)
 		free(game->mlx);
 	if (game->map)

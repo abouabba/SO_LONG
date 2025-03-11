@@ -6,7 +6,7 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 13:41:06 by abouabba          #+#    #+#             */
-/*   Updated: 2025/03/11 06:08:40 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/03/11 14:19:23 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ int	main(int ac, char **av)
 	position_player(game);
 	flood_fill(game, game->x, game->y);
 	check_valid_path(game);
+	free_map(game->copy);
 	init_game(game);
 	load_textures(game);
 	render_map(game);
