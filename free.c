@@ -6,7 +6,7 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 16:40:22 by abouabba          #+#    #+#             */
-/*   Updated: 2025/03/11 17:35:06 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/03/11 21:33:31 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ void	ft_exit(t_game *game)
 	}
 	else if (game->c_count == 0)
 	{
+		ft_putnbr(game->move + 1);
+		write (1, "\n", 1);
 		free_resources(game);
 		write (1, "you win!\n", 9);
 		exit(0);
