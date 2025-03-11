@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/11 15:50:36 by abouabba          #+#    #+#             */
+/*   Updated: 2025/03/11 15:51:36 by abouabba         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "get_next_line.h"
 
@@ -14,7 +25,7 @@ char	*check_read(int fd, char *buffer)
 	while (1)
 	{
 		read_bytes = read(fd, temp, BUFFER_SIZE);
-		if (read_bytes <= 0)   
+		if (read_bytes <= 0)
 			break ;
 		temp[read_bytes] = '\0';
 		buffer = ft_strjoin(buffer, temp);

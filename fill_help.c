@@ -6,7 +6,7 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 13:39:47 by abouabba          #+#    #+#             */
-/*   Updated: 2025/03/11 15:22:56 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/03/11 16:47:16 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,24 +77,4 @@ void	check_valid_path(t_game *game)
 		}
 		i++;
 	}
-}
-
-void	free_image(t_game *game)
-{
-	if (game->wall)
-		mlx_destroy_image(game->mlx, game->wall);
-	if (game->empty)
-		mlx_destroy_image(game->mlx, game->empty);
-	if (game->player)
-		mlx_destroy_image(game->mlx, game->player);
-	if (game->collectible)
-		mlx_destroy_image(game->mlx, game->collectible);
-	if (game->exit)
-		mlx_destroy_image(game->mlx, game->exit);
-}
-
-void free_window(t_game *game)
-{
-	if (game->win)
-		mlx_destroy_window(game->mlx, game->win);
 }

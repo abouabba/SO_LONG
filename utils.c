@@ -6,25 +6,11 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 16:35:02 by abouabba          #+#    #+#             */
-/*   Updated: 2025/03/11 15:33:40 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/03/11 16:45:58 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-
-void	free_map(char **map)
-{
-	int	i;
-
-	i = 0;
-	while (map[i])
-	{
-		free(map[i]);
-		i++;
-	}
-	free(map);
-}
 
 void	print_error(char *msg)
 {
@@ -69,24 +55,25 @@ void	load_textures(t_game *game)
 	}
 }
 
-void	put_images(t_game *game, int x, int y)
+void	render_map_2(t_game *game, int x, int y)
 {
 	if (game->map[x][y] == '1')
-				mlx_put_image_to_window(game->mlx,
-					game->win, game->wall, y * 40, x * 40);
-			else if (game->map[x][y] == '0')
-				mlx_put_image_to_window(game->mlx,
-					game->win, game->empty, y * 40, x * 40);
-			else if (game->map[x][y] == 'C')
-				mlx_put_image_to_window(game->mlx, game->win,
-					game->collectible, y * 40, x * 40);
-			else if (game->map[x][y] == 'P')
-				mlx_put_image_to_window(game->mlx, game->win,
-					game->player, y * 40, x * 40);
-			else if (game->map[x][y] == 'E')
-				mlx_put_image_to_window(game->mlx,
-					game->win, game->exit, y * 40, x * 40);
+		mlx_put_image_to_window(game->mlx,
+			game->win, game->wall, y * 40, x * 40);
+	else if (game->map[x][y] == '0')
+		mlx_put_image_to_window(game->mlx,
+			game->win, game->empty, y * 40, x * 40);
+	else if (game->map[x][y] == 'C')
+		mlx_put_image_to_window(game->mlx, game->win,
+			game->collectible, y * 40, x * 40);
+	else if (game->map[x][y] == 'P')
+		mlx_put_image_to_window(game->mlx, game->win,
+			game->player, y * 40, x * 40);
+	else if (game->map[x][y] == 'E')
+		mlx_put_image_to_window(game->mlx,
+			game->win, game->exit, y * 40, x * 40);
 }
+
 void	render_map(t_game *game)
 {
 	int	x;
@@ -98,7 +85,7 @@ void	render_map(t_game *game)
 		y = 0;
 		while (game->map[x][y])
 		{
-			put_images(game, x, y);
+			render_map_2(game, x, y);
 			y++;
 		}
 		x++;

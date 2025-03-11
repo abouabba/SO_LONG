@@ -9,7 +9,8 @@ SRCS = main.c \
 	   utils.c \
 	   fill_help.c \
 	   ft_move_player.c \
-	   key_move.c
+	   key_move.c \
+	   free.c
 
 OBJS = $(SRCS:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 12:01:15 by abouabba          #+#    #+#             */
-/*   Updated: 2025/03/11 03:36:30 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/03/11 16:01:13 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 void	ft_putnbr(int number)
 {
-	char str[] = "0123456789";
+	char	*str;
 
-	if (number >= 10)
+	str = "0123456789";
+	if (number > 9)
 		ft_putnbr(number / 10);
 	write (1, &str[number % 10], 1);
 }
