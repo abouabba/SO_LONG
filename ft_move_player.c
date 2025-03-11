@@ -6,7 +6,7 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 11:58:39 by abouabba          #+#    #+#             */
-/*   Updated: 2025/03/11 15:03:22 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/03/11 15:29:16 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	check_valide(char **av, t_game *game)
 	}
 	game->height = count_map_lines(av[1]);
 	game->width = ft_strlen(game->map[0]);
-	if (game->height >= 50 || game->width > 97)
+	if (game->height > 50 || game->width > 97)
 		ft_exit(game);
 	game->copy = copy_map(game->map, game->height);
 	if (!is_map_valid_by_walls(game)
@@ -59,10 +59,11 @@ int	handle_keypress(int keycode, t_game *game)
 
 void	ft_exit(t_game *game)
 {
-	if (game->height >= 50 || game->width > 97)
+	if (game->height > 50 || game->width > 97)
 	{
-		free_resources(game);
-		print_error("Error\n!Map is too big");
+		free_map(game->map);
+		free (game);
+		print_error("Error\n!Map is too big\n");
 		exit(1);
 	}
 	else if (game->c_count == 0)

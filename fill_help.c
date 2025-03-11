@@ -6,7 +6,7 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 13:39:47 by abouabba          #+#    #+#             */
-/*   Updated: 2025/03/11 14:11:53 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/03/11 15:22:56 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,10 @@ void	check_valid_path(t_game *game)
 		{
 			if (game->copy[i][j] == 'C' || game->copy[i][j] == 'E')
 			{
-				print_error("Error\n!In valid map");
+				print_error("Error\nthe player can't win!\n");
 				free_map(game->copy);
+				free_map(game->map);
+				free (game);
 				exit(1);
 			}
 			j++;
