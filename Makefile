@@ -21,7 +21,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) -o $(NAME)
 
-%.o: %.c
+%.o: %.c so_long.h
 	$(CC) $(CFLAGS)  -c $< -o $@
 
 clean:

@@ -6,7 +6,7 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 16:42:10 by abouabba          #+#    #+#             */
-/*   Updated: 2025/03/11 03:57:36 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/03/11 17:21:56 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	**store_map_to_2d_array(char *file_name, int height)
 
 	height = count_map_lines(file_name);
 	if (height <= 0)
-		return (0);
+		return (NULL);
 	map = malloc((height + 1) * sizeof(char *));
 	if (!map)
 		return (NULL);

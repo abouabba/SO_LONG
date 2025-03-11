@@ -6,7 +6,7 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 11:58:39 by abouabba          #+#    #+#             */
-/*   Updated: 2025/03/11 16:42:09 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/03/11 17:36:38 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	check_valide(char **av, t_game *game)
 	game->map = store_map_to_2d_array(av[1], game->height);
 	if (!game->map)
 	{
-		free_map(game->map);
 		free(game);
 		print_error("Error\n!in valid map");
 		exit (1);
