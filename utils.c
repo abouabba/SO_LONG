@@ -6,7 +6,7 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 16:35:02 by abouabba          #+#    #+#             */
-/*   Updated: 2025/03/10 23:22:10 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/03/11 01:10:37 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,9 @@ void	load_textures(t_game *game)
 	game->exit = mlx_xpm_file_to_image(game->mlx, "textures/exit.xpm", &game->width, &game->height);
 	if (!game->wall || !game->collectible || !game->empty || !game->exit || !game->player)
 	{
+		free_map(game->map);
+		free(game);
+		mlx_destroy_image(game->mlx, game->img);
 		print_error("Error\n!failed to load textures");
 		exit(1);
 	}

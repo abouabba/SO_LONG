@@ -6,7 +6,7 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 11:58:39 by abouabba          #+#    #+#             */
-/*   Updated: 2025/03/11 00:40:52 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/03/11 01:13:35 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@ void check_valide(char **av, t_game *game)
 	game->map = store_map_to_2d_array(av[1], game->height);
 	if (!game->map)
 	{
-		print_error("Error\n!in valid map");
+		free_map(game->map);
 		free(game);
+		print_error("Error\n!in valid map");
 		exit (1);
 	}
 	game->height = count_map_lines(av[1]);
@@ -26,11 +27,12 @@ void check_valide(char **av, t_game *game)
 	if (game->height >= 50 || game->width > 97)
 		ft_exit(game);
 	game->copy = copy_map(game->map, game->height);
-	if (!is_map_valid_by_walls(game->map, game->height, game->width) ||
-		!is_map_rectangular(game->map) || !is_map_valid_chars(game))
+	if (!is_map_valid_by_walls(game) ||
+		!is_map_rectangular(game) || !is_map_valid_chars(game))
 	{
 		print_error("Error\n!In valid map");
 		free_map(game->map);
+		free_map(game->copy);
 		free(game);
 		exit (1);
 	}
@@ -58,7 +60,6 @@ void ft_exit(t_game *game)
 	{
 		free_map(game->map);
 		free(game);
-		write (1, "Error\n!In valid size\n", 21);
 		exit(1);
 	}
 	else if (game->c_count == 0)
@@ -71,11 +72,12 @@ void ft_exit(t_game *game)
 	}
 	else if (game->c_count != 0)
 	{
+		mlx_destroy_image(game->mlx, game->img);
+		mlx_destroy_window(game->mlx, game->win);
 		free_map(game->map);
 		free_map(game->copy);
 		free(game);
 		write (1, "Error\n!you lose", 20);
 		exit(1);
 	}
-	printf ("=--==-=-=-=-=--==--=-=-=--=+_++_+_+_+_+_\n");
 }
