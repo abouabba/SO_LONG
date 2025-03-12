@@ -6,7 +6,7 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 16:40:22 by abouabba          #+#    #+#             */
-/*   Updated: 2025/03/11 21:33:31 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/03/12 22:14:49 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,15 @@ void	free_map(char **map)
 	int	i;
 
 	i = 0;
-    if (map)
-    {
-        while (map[i])
-        {
-            free(map[i]);
-            i++;
-        }
-        free(map);
-    }
+	if (map)
+	{
+		while (map[i])
+		{
+			free(map[i]);
+			i++;
+		}
+		free(map);
+	}
 }
 
 void	free_resources(t_game *game)
