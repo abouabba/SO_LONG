@@ -6,7 +6,7 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 22:05:07 by abouabba          #+#    #+#             */
-/*   Updated: 2025/03/12 17:32:42 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/03/12 22:20:24 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include "mlx/mlx.h"
-// # include "mlx/mlx_int.h"
 
 typedef struct s_game
 {

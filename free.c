@@ -6,7 +6,7 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 16:40:22 by abouabba          #+#    #+#             */
-/*   Updated: 2025/03/12 22:14:49 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/03/12 22:18:51 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	ft_exit(t_game *game)
 	{
 		free_map(game->map);
 		free (game);
-		print_error("Error\n!Map is too big\n");
+		print_error("Error\n----<!Map is too big---->\n");
 		exit(1);
 	}
 	else if (game->c_count == 0)
@@ -54,7 +54,7 @@ void	ft_exit(t_game *game)
 		ft_putnbr(game->move + 1);
 		write (1, "\n", 1);
 		free_resources(game);
-		write (1, "you win!\n", 9);
+		write (1, "<----you win!--->\n", 9);
 		exit(0);
 	}
 }

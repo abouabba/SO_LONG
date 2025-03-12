@@ -6,7 +6,7 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 11:58:39 by abouabba          #+#    #+#             */
-/*   Updated: 2025/03/11 21:32:41 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/03/12 22:19:28 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	check_valide(char **av, t_game *game)
 	if (!game->map)
 	{
 		free(game);
-		print_error("Error\n!in valid map");
+		print_error("Error\n----<!in valid map---->");
 		exit (1);
 	}
 	game->height = count_map_lines(av[1]);
@@ -29,7 +29,7 @@ void	check_valide(char **av, t_game *game)
 	if (!is_map_valid_by_walls(game)
 		|| !is_map_rectangular(game) || !is_map_valid_chars(game))
 	{
-		print_error("Error\n!In valid map");
+		print_error("Error\n----<!in valid map---->");
 		free_map(game->map);
 		free_map(game->copy);
 		free(game);

@@ -6,7 +6,7 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 13:41:06 by abouabba          #+#    #+#             */
-/*   Updated: 2025/03/12 17:17:48 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/03/12 22:20:13 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	check_argument(int ac, char **av)
 	}
 	if (!in_valid_ber_file(av[1]))
 	{
-		print_error("Error\n!file_name is not valid");
+		print_error("Error\n<----!file_name is not valid---->");
 		exit (1);
 	}
 }
@@ -95,7 +95,7 @@ int	main(int ac, char **av)
 	game = malloc(sizeof(t_game));
 	if (!game)
 	{
-		print_error("Error\n!Memory allocation failed");
+		print_error("Error\n<----!Memory allocation failed---->");
 		exit(1);
 	}
 	game->move = 0;
