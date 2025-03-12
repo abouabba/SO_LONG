@@ -6,7 +6,7 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 13:41:06 by abouabba          #+#    #+#             */
-/*   Updated: 2025/03/11 17:17:30 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/03/12 17:17:48 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ int	main(int ac, char **av)
 		print_error("Error\n!Memory allocation failed");
 		exit(1);
 	}
+	game->move = 0;
 	check_valide(av, game);
 	position_player(game);
 	flood_fill(game, game->x, game->y);

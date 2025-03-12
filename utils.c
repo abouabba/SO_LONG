@@ -6,7 +6,7 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 16:35:02 by abouabba          #+#    #+#             */
-/*   Updated: 2025/03/11 16:45:58 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/03/12 16:50:28 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	init_game(t_game *game)
 		exit(1);
 	}
 	game->win = mlx_new_window(game->mlx, game->width * 40,
-			game->height * 40, "so_long");
+			game->height * 40, "./so_long");
 	if (!game->win)
 	{
 		print_error("Error\n!Window creation failed");
