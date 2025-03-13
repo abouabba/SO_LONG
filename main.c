@@ -99,6 +99,7 @@ int	main(int ac, char **av)
 		exit(1);
 	}
 	game->move = 0;
+	printf("=============================================\n");
 	check_valide(av, game);
 	position_player(game);
 	flood_fill(game, game->x, game->y);
