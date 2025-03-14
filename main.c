@@ -6,7 +6,7 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 13:41:06 by abouabba          #+#    #+#             */
-/*   Updated: 2025/03/12 22:20:13 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/03/14 21:51:10 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ int	main(int ac, char **av)
 	load_textures(game);
 	render_map(game);
 	mlx_hook(game->win, 17, 0, close_window, game);
-	mlx_key_hook(game->win, handle_keypress, game);
+	mlx_hook(game->win,2, 1, handle_keypress, game);
 	mlx_loop(game->mlx);
 	free_resources(game);
 	return (0);
