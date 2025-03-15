@@ -6,7 +6,7 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 22:05:07 by abouabba          #+#    #+#             */
-/*   Updated: 2025/03/15 16:00:23 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/03/15 17:12:06 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ char	**store_map_to_2d_array(char *file_name, int height);
 int		in_valid_ber_file(char *file_name);
 void	free_map(char **map);
 int		is_map_valid_by_walls(t_game *game);
-void	print_error(char *msg);
 int		is_map_rectangular(t_game *game);
 int		is_map_valid_chars(t_game *game);
 char	**copy_map(char **map, int height);

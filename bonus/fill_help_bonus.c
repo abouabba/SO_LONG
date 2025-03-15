@@ -6,7 +6,7 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 13:39:47 by abouabba          #+#    #+#             */
-/*   Updated: 2025/03/14 22:37:21 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/03/15 17:13:13 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	**copy_map(char **map, int height)
 	map_copy = malloc((height + 1) * sizeof(char *));
 	if (!map_copy)
 	{
-		print_error("Error\nMemory allocation failed fot map copy");
+		perror("Error\nMemory allocation failed fot map copy");
 		return (NULL);
 	}
 	i = 0;
@@ -67,7 +67,7 @@ void	check_valid_path(t_game *game)
 		{
 			if (game->copy[i][j] == 'C' || game->copy[i][j] == 'E')
 			{
-				print_error("Error\n<----the player can't win!---->\n");
+				perror("Error\n<----the player can't win!---->\n");
 				free_map(game->copy);
 				free_map(game->map);
 				free (game);

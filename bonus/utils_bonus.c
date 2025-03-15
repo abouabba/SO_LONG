@@ -6,38 +6,33 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 16:35:02 by abouabba          #+#    #+#             */
-/*   Updated: 2025/03/15 15:26:40 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/03/15 17:17:21 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
-
-void	print_error(char *msg)
-{
-	write (2, msg, ft_strlen(msg));
-}
 
 void	init_game(t_game *game)
 {
 	game->mlx = mlx_init();
 	if (!game->mlx)
 	{
-		print_error("Error\n<----!MLX initilization failed---->");
+		perror("Error\n<----!MLX initilization failed---->");
 		exit(1);
 	}
 	game->win = mlx_new_window(game->mlx, game->width * 40,
 			game->height * 40, "./so_long");
 	if (!game->win)
 	{
-		print_error("Error\n<----!Window creation failed---->");
+		perror("Error\n<----!Window creation failed---->");
 		exit(1);
 	}
 }
 
 void	load_textures(t_game *game)
 {
-	int width;
-	int height;
+	int	width;
+	int	height;
 
 	game->wall = mlx_xpm_file_to_image(game->mlx,
 			"textures/wall.xpm", &width, &height);
@@ -53,7 +48,7 @@ void	load_textures(t_game *game)
 		|| !game->player || !game->wall)
 	{
 		free_resources(game);
-		print_error("Error\n<----!Texture loading failed---->");
+		perror("Error\n<----!Texture loading failed---->");
 		exit(1);
 	}
 }

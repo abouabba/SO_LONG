@@ -6,7 +6,7 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 22:05:07 by abouabba          #+#    #+#             */
-/*   Updated: 2025/03/15 15:58:34 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/03/15 17:16:03 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ typedef struct s_game
 	int			p_count;
 	int			e_count;
 	int			move;
-	char 		*pointd;
+	char		*pointd;
 }				t_game;
 
 # define KEY_W 119

@@ -6,7 +6,7 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 13:41:06 by abouabba          #+#    #+#             */
-/*   Updated: 2025/03/15 15:28:59 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/03/15 17:17:42 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,12 +77,12 @@ void	check_argument(int ac, char **av)
 {
 	if (ac != 2)
 	{
-		print_error("Error\n!In valid file");
+		perror("Error\n!In valid file");
 		exit (1);
 	}
 	if (!in_valid_ber_file(av[1]))
 	{
-		print_error("Error\n<----!file_name is not valid---->");
+		perror("Error\n<----!file_name is not valid---->");
 		exit (1);
 	}
 }
@@ -95,7 +95,7 @@ int	main(int ac, char **av)
 	game = malloc(sizeof(t_game));
 	if (!game)
 	{
-		print_error("Error\n<----!Memory allocation failed---->");
+		perror("Error\n<----!Memory allocation failed---->");
 		exit(1);
 	}
 	game->move = 0;
@@ -108,7 +108,7 @@ int	main(int ac, char **av)
 	load_textures(game);
 	render_map(game);
 	mlx_hook(game->win, 17, 0, close_window, game);
-	mlx_hook(game->win,2, 1, handle_keypress, game);
+	mlx_hook(game->win, 2, 1, handle_keypress, game);
 	mlx_loop(game->mlx);
 	free_resources(game);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 14:10:51 by abouabba          #+#    #+#             */
-/*   Updated: 2025/03/15 14:10:53 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/03/15 17:16:20 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	alloction(int n)
 
 	i = 0;
 	if (n == 0)
-		return (1); 
+		return (1);
 	if (n < 0)
 		i += 1;
 	while (n != 0)

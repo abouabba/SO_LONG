@@ -6,7 +6,7 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 11:58:39 by abouabba          #+#    #+#             */
-/*   Updated: 2025/03/15 14:58:38 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/03/15 17:16:46 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	check_valide(char **av, t_game *game)
 	if (!game->map)
 	{
 		free(game);
-		print_error("Error\n----<!in valid map---->");
+		perror("Error\n----<!in valid map---->");
 		exit (1);
 	}
 	game->height = count_map_lines(av[1]);
@@ -29,7 +29,7 @@ void	check_valide(char **av, t_game *game)
 	if (!is_map_valid_by_walls(game)
 		|| !is_map_rectangular(game) || !is_map_valid_chars(game))
 	{
-		print_error("Error\n----<!in valid map---->");
+		perror("Error\n----<!in valid map---->");
 		free_map(game->map);
 		free_map(game->copy);
 		free(game);
@@ -55,7 +55,7 @@ int	handle_keypress(int keycode, t_game *game)
 	game->pointd = ft_itoa(game->move);
 	render_map(game);
 	mlx_string_put(game->mlx, game->win, 10, 30, 0x0000FF00, "Moves :");
-    mlx_string_put(game->mlx, game->win, 60, 30, 0x0000FF00, game->pointd);
+	mlx_string_put(game->mlx, game->win, 60, 30, 0x0000FF00, game->pointd);
 	free(game->pointd);
 	game->pointd = NULL;
 	return (0);
