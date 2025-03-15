@@ -6,7 +6,7 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 16:35:02 by abouabba          #+#    #+#             */
-/*   Updated: 2025/03/14 21:54:40 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/03/15 15:28:35 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,19 @@ void	init_game(t_game *game)
 
 void	load_textures(t_game *game)
 {
+	int height;
+	int width;
+
 	game->wall = mlx_xpm_file_to_image(game->mlx,
-			"textures/wall.xpm", &game->width, &game->height);
+			"textures/wall.xpm", &width, &height);
 	game->empty = mlx_xpm_file_to_image(game->mlx,
-			"textures/empty.xpm", &game->width, &game->height);
+			"textures/empty.xpm", &width, &height);
 	game->player = mlx_xpm_file_to_image(game->mlx,
-			"textures/player.xpm", &game->width, &game->height);
+			"textures/player.xpm", &width, &height);
 	game->collectible = mlx_xpm_file_to_image(game->mlx,
-			"textures/collectible.xpm", &game->width, &game->height);
+			"textures/collectible.xpm", &width, &height);
 	game->exit = mlx_xpm_file_to_image(game->mlx,
-			"textures/exit.xpm", &game->width, &game->height);
+			"textures/exit.xpm", &width, &height);
 	if (!game->exit || !game->collectible || !game->empty
 		|| !game->player || !game->wall)
 	{

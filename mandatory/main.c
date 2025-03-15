@@ -6,7 +6,7 @@
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 13:41:06 by abouabba          #+#    #+#             */
-/*   Updated: 2025/03/14 21:51:10 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/03/15 15:28:59 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,6 @@ int	main(int ac, char **av)
 		exit(1);
 	}
 	game->move = 0;
-	printf("=============================================\n");
 	check_valide(av, game);
 	position_player(game);
 	flood_fill(game, game->x, game->y);
