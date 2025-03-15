@@ -1,33 +1,44 @@
-NAME = so_long
 CC = cc
 CFLAGS = -Wall -Wextra -Werror 
 
-SRCS = main.c \
-	   get_next_line/get_next_line.c \
-       get_next_line/get_next_line_utils.c \
-       valid_map.c \
-	   utils.c \
-	   fill_help.c \
-	   ft_move_player.c \
-	   key_move.c \
-	   free.c 
+NAME = so_long
 
-OBJS = $(SRCS:.c=.o)
+BONUS_NAME = so_long_bonus
+
+SRC = 	mandatory/main.c mandatory/get_next_line/get_next_line.c mandatory/get_next_line/get_next_line_utils.c mandatory/valid_map.c \
+	   mandatory/utils.c mandatory/fill_help.c mandatory/ft_move_player.c mandatory/key_move.c mandatory/free.c \
+
+BONUS = bonus/main_bonus.c bonus/get_next_line/get_next_line_bonus.c bonus/get_next_line/get_next_line_utils_bonus.c bonus/valid_map_bonus.c \
+	   bonus/utils_bonus.c bonus/fill_help_bonus.c bonus/ft_move_player_bonus.c bonus/key_move_bonus.c bonus/free_bonus.c bonus/string_to_put_bonus.c \
+	   bonus/ft_itoa_bonus.c \
+
+OBJ = ${SRC:.c=.o}
+BONUS_OBJ = ${BONUS:.c=.o}
+
+HEADER = so_long.h
+
+HEADER_BONUS = so_long_bonus.h
 
 LDFLAGS = -L ./mlx -lmlx -lXext -lX11
 
-all: $(NAME)
+all :${NAME}
 
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) -o $(NAME)
+${NAME} : ${OBJ}
+	${CC} ${CFLAGS} ${OBJ} ${LDFLAGS} -o ${NAME}
 
-%.o: %.c so_long.h
-	$(CC) $(CFLAGS)  -c $< -o $@
+bonus : ${BONUS_OBJ}
+	${CC} ${CFLAGS} ${BONUS_OBJ} ${LDFLAGS}  -o ${BONUS_NAME}
+
+%.o:%.c  ${HEADER}
+	${CC} ${CFLAGS} -c $< -o $@
+
+%.o:%.c  ${HEADER_BONUS}
+	${CC} ${CFLAGS} -c $< -o $@
 
 clean:
-	rm -f $(OBJS)
+	rm -f ${OBJ} ${BONUS_OBJ}
 
-fclean: clean
-	rm -f $(NAME) clean
+fclean :clean   
+	rm -f ${NAME} ${BONUS_NAME}
 
-re: fclean all
+re : fclean all

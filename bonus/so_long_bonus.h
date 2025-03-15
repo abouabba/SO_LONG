@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abouabba <abouabba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 22:05:07 by abouabba          #+#    #+#             */
-/*   Updated: 2025/03/12 22:20:24 by abouabba         ###   ########.fr       */
+/*   Updated: 2025/03/15 14:54:31 by abouabba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 
-# include "./get_next_line/get_next_line.h"
+# include "./get_next_line/get_next_line_bonus.h"
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
-# include "mlx/mlx.h"
+# include "../mlx/mlx.h"
 
 typedef struct s_game
 {
@@ -42,6 +42,7 @@ typedef struct s_game
 	int			p_count;
 	int			e_count;
 	int			move;
+	char 		*pointd;
 }				t_game;
 
 # define KEY_W 119
@@ -77,10 +78,10 @@ void	move_right(t_game *game);
 void	move_down(t_game *game);
 void	move_left(t_game *game);
 void	ft_exit(t_game *game);
-void	ft_putnbr(int number);
 void	free_image(t_game *game);
 void	free_window(t_game *game);
 void	free_resources(t_game *game);
 int		close_window(t_game *game);
+char	*ft_itoa(int n);
 
 #endif
